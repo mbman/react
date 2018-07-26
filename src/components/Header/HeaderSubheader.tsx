@@ -3,8 +3,6 @@ import React from 'react'
 
 import { childrenExist, createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
 
-import headerSubheaderRules from './headerSubheaderRules'
-
 /**
  * Headers may contain subheaders.
  */
@@ -30,8 +28,6 @@ class HeaderSubheader extends UIComponent<any, any> {
   }
 
   static handledProps = ['as', 'children', 'className', 'content']
-
-  static rules = headerSubheaderRules
 
   renderComponent({ ElementType, classes, rest }) {
     const { children, content } = this.props

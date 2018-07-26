@@ -2,8 +2,6 @@ import PropTypes from 'prop-types'
 import React from 'react'
 
 import { childrenExist, customPropTypes, UIComponent } from '../../lib'
-import textRules from './textRules'
-import textVariables from './textVariables'
 
 /**
  * A component containing text
@@ -59,10 +57,6 @@ class Text extends UIComponent<any, any> {
     'success',
     'timestamp',
   ]
-
-  static rules = textRules
-
-  static variables = textVariables
 
   renderComponent({ ElementType, classes, rest }) {
     const { children, content } = this.props

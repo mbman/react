@@ -2,15 +2,10 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { customPropTypes, UIComponent, SUI } from '../../lib'
 
-import iconRules from './iconRules'
-import iconVariables from './iconVariables'
-
 class Icon extends UIComponent<any, any> {
   static className = 'ui-icon'
 
   static displayName = 'Icon'
-
-  static variables = iconVariables
 
   static propTypes = {
     /** An element type to render as (string or function). */
@@ -72,8 +67,6 @@ class Icon extends UIComponent<any, any> {
     as: 'i',
     kind: 'FontAwesome',
   }
-
-  static rules = iconRules
 
   renderComponent({ ElementType, classes, rest }) {
     return <ElementType className={classes.root} {...rest} />

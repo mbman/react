@@ -2,11 +2,13 @@ import * as customPropTypes from './customPropTypes'
 import * as SUI from './SUI'
 
 export { default as AutoControlledComponent } from './AutoControlledComponent'
+export { default as callable } from './callable'
 export { default as childrenExist } from './childrenExist'
 export { default as UIComponent } from './UIComponent'
 export { debug, makeDebugger } from './debug'
 export { default as eventStack } from './eventStack'
 export { felaRenderer, felaRtlRenderer } from './felaRenderer'
+export { default as toCompactArray } from './toCompactArray'
 
 export * from './factories'
 export { default as getClasses } from './getClasses'
