@@ -1,13 +1,16 @@
 import { pxToRem } from '../../lib'
+import { IImageVariables } from './imageVariables'
 
 export default {
-  root: ({ props, variables }) => ({
+  root: ({ props, variables: v }: { props: any; variables: IImageVariables }) => ({
     display: 'inline-block',
     verticalAlign: 'middle',
+    width: v.width,
+    height: v.height,
     ...(props.circular && { borderRadius: pxToRem(9999) }),
     ...(props.avatar && {
-      width: variables.avatarSize,
-      borderRadius: variables.avatarRadius,
+      width: v.avatarSize,
+      borderRadius: v.avatarRadius,
     }),
   }),
 }
