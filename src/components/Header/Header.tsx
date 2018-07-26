@@ -3,8 +3,6 @@ import React from 'react'
 
 import { childrenExist, customPropTypes, UIComponent } from '../../lib'
 import HeaderSubheader from './HeaderSubheader'
-import headerRules from './headerRules'
-import headerVariables from './headerVariables'
 
 /**
  * A header provides a short summary of content
@@ -35,10 +33,6 @@ class Header extends UIComponent<any, any> {
   }
 
   static handledProps = ['as', 'children', 'className', 'content', 'subheader', 'textAlign']
-
-  static rules = headerRules
-
-  static variables = headerVariables
 
   static Subheader = HeaderSubheader
 

@@ -5,19 +5,12 @@ import React from 'react'
 
 import { childrenExist, createShorthandFactory, customPropTypes, UIComponent } from '../../lib'
 
-import menuItemRules from './menuItemRules'
-import menuVariables from './menuVariables'
-
 class MenuItem extends UIComponent<any, any> {
   static displayName = 'MenuItem'
 
   static className = 'ui-menu__item'
 
-  static variables = menuVariables
-
   static create: Function
-
-  static rules = menuItemRules
 
   static propTypes = {
     /** A menu item can be active. */
