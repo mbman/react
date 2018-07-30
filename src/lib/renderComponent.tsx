@@ -8,6 +8,8 @@ import { FelaTheme } from 'react-fela'
 import getElementType from './getElementType'
 import getUnhandledProps from './getUnhandledProps'
 import callable from './callable'
+import reduceArrayOfArrays from './reduceArrayOfArrays'
+import combineArrayOfCallables from './combineArrayOfCallables'
 import {
   ComponentVariables,
   ComponentVariablesFunction,
@@ -52,14 +54,16 @@ const renderComponent = <P extends {}>(
         //
         // Resolve variables using final siteVariables, allow props to override
         //
-        const variablesOnContext: ComponentVariables = componentVariables[displayName]
+        const variablesOnContext: ComponentVariables[] = reduceArrayOfArrays(
+          componentVariables,
+          displayName,
+        )
         const variablesProps: ComponentVariables = props.variables
 
-        const variablesFunctionOnContext: ComponentVariablesFunction = callable(variablesOnContext)
         const variablesFunctionOnProps: ComponentVariablesFunction = callable(variablesProps)
 
         const variables: ComponentVariablesObject = {
-          ...variablesFunctionOnContext(siteVariables),
+          ...combineArrayOfCallables(variablesOnContext, siteVariables),
           ...variablesFunctionOnProps(siteVariables),
         }
 
@@ -69,11 +73,18 @@ const renderComponent = <P extends {}>(
 
         // TODO: this is (can be) a IMergedThemes, handle styles which might be arrays
         // TODO: use toCompactArray
-        const stylesOnContext: IComponentStyles = componentStyles[displayName]
-        const stylesOnProps: IComponentStyles = props.styles
+        const stylesOnContextArr: IComponentStyles[] = reduceArrayOfArrays(
+          componentStyles,
+          displayName,
+        )
+        const stylesOnContext: IComponentStyles = combineArrayOfCallables(
+          stylesOnContextArr,
+          displayName,
+        )
+        const stylesOnProps: IComponentStyles = props.styles || {}
 
         const componentParts = _.union(_.keys(stylesOnContext), _.keys(stylesOnProps))
-        const ruleProps = { props: this.props, variables, siteVariables, rtl }
+        const ruleProps = { props, variables, siteVariables, rtl }
         const { renderRule } = renderer
 
         const classes: IComponentClasses = componentParts.reduce((acc, partName) => {
