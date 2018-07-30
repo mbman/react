@@ -17,6 +17,9 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
+### Fixes
+- Changing the default styles for Input component @alinais ([#25](https://github.com/stardust-ui/react/pull/25))
+
 <!--------------------------------[ v0.2.1 ]------------------------------- -->
 ## [v0.2.1](https://github.com/stardust-ui/react/tree/v0.2.1) (2018-07-20)
 [Compare changes](https://github.com/stardust-ui/react/compare/v0.2.0...v0.2.1)
